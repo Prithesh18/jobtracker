@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTracker</title>
+    <link href="temp.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>JobTracker</h1>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#applications">Applications</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#settings">Settings</a>
+        </nav>
+
+    </header>
+    <main id="dashboard">
+        <h1>Job Application Tracker</h1>
+        <p>Track and manage job search in one place</p>
+
+        <div class="stats">
+            <div class="stats-card">
+                <h3>Total Applications</h3>
+                <p id="total-count">0</p>
+            </div>
+            <div class="stats-card">
+                <h3>Applied</h3>
+                <p id="applied-count">0</p>
+            </div>
+            <div class="stats-card">
+                <h3>Interview</h3>
+                <p id="interview-count">0</p>
+            </div>
+            <div class="stats-card">
+                <h3>Selected</h3>
+                <p id="selected-count">0</p>
+            </div>
+        </div>
+        
+        <section id="applications">
+            <h2>Add New Application</h2>
+            <form id="application-form">
+            <label for="company">Company Name <span class="required">*</span></label>
+            <input
+                type="text"
+                id="company"
+                minlength="2"
+                required
+            >
+
+            <label for="job">Job Role <span class="required">*</span></label>
+            <input
+                type="text"
+                id="job"
+                minlength="2"
+                required
+            >
+
+            <label for="st">Status</label>
+            <select id="st">
+                <option>Applied</option>
+                <option>Interview</option>
+                <option>Selected</option>
+                <option>Rejected</option>
+            </select>
+
+            <label for="dt">Application Date <span class="required">*</span></label>
+            <input type="date" id="dt" required>
+            <label for="interview-date">Interview Date (optional)</label>
+            <input type="date" id="interview-date">
+            <label for="interview-notes">Interview Preparation Notes (optional)</label>
+            <textarea
+            id="interview-notes"
+            rows="3"
+            placeholder="Topics to prepare, interview round, meeting details..."
+            ></textarea>
+
+            <button type="submit">Add Application</button>
+            </form>
+
+        </section>
+        
+        <section class="upcoming-section">
+            <h2>Upcoming Interviews</h2>
+            <p class="section-description">
+                Keep track of your scheduled interviews.
+            </p>
+            <div id="upcoming-interviews">
+                <p class="empty-message">No upcoming interviews scheduled.</p>
+            </div>
+        </section>
+        
+        <section id="analytics" class="analytics-section">
+            <h2>Application Analytics</h2>
+            <p class="section-description">
+                Understand your job search progress at a glance.
+            </p>
+            
+            <div class="chart-container">
+                <canvas id="status-chart"></canvas>
+            </div>
+            <div class="conversion-metrics">
+                <div class="metric-card">
+                    <h3>Interview Rate</h3>
+                    <p id="interview-rate">0%</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Selection Rate</h3>
+                    <p id="selection-rate">0%</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="recent-applications">
+            <h2>Recent Applications</h2>
+            <p id="results-count">Showing all applications</p>
+            <div class="application-controls">
+                <input
+                type="text"
+                id="search-input"
+                placeholder="Search company or job role..."
+                >
+                
+                <select id="status-filter">
+                    <option value="All">All Statuses</option>
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Selected">Selected</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                
+                <select id="sort-order">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+            </div>
+
+        </section>
+        
+        <section id="settings">
+            <h2>Settings</h2>
+            <p>Manage your saved job applications.</p>
+            <button type="button" id="export-applications">
+                Export Applications to CSV
+            </button>
+            <button type="button" id="clear-applications">
+                Clear All Data
+            </button>
+        </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="temp.js"></script>
+</body>
+</html>
